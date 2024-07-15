@@ -1,4 +1,4 @@
-import {mutation} from "./_generated/server";
+import {mutation, query} from "./_generated/server";
 import {v} from "convex/values";
 
 export const createFile = mutation({
@@ -11,3 +11,10 @@ export const createFile = mutation({
         });
     },
 });
+
+export const getFiles = query({
+    args: {},
+    async handler(ctx, args) {
+        return ctx.db.query("files").collect()
+    }
+})
